@@ -6,8 +6,10 @@
 </p>
 <ul>
   <% @cocktails.each do |cocktail| %>
-    <li>
+    <li class="list-unstyled">
       <p>
+        <% picture = cocktail.pictures.first %>
+        <%= cl_image_tag picture.path, width: 30, height: 20, crop: :fill if picture %>
         <%= link_to cocktail.name, cocktail_path(cocktail) %><br>
 
       </p>

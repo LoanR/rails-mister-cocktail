@@ -4,10 +4,16 @@
   <li>
     <p>
       <%= dose.ingredient.name %>: <%= dose.description %>
+
+      <%= link_to "&times;".html_safe, cocktail_dose_path(@cocktail, dose), method: :delete, data: { confirm: "Are you sure?" } %>
     </p>
   </li>
   <% end %>
 </ul>
+
+<% @cocktail.pictures.each do |picture| %>
+  <%= cl_image_tag picture.path, width: 300, height: 200, crop: :fill  %>
+<% end %>
 
 <%= simple_form_for [@cocktail, @dose] do |f| %>
   <%= f.association :ingredient %>
